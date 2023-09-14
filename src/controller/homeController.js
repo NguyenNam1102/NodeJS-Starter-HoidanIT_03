@@ -1,7 +1,17 @@
+import connection from "../configs/connectDB"
 
 let getHomePage = (req, res) => {
     // logic
-    return res.render('index.ejs')
+    let data = []
+    connection.query(
+        'SELECT * FROM `users` ',
+        function (err, results, fields) {
+            console.log('>>> CHECK: ');
+            console.log(results);
+            data = results.map((row) => { return row })
+            return res.render('index.ejs', { dataUser: JSON.stringify(data) })
+        }
+    );
 }
 
 module.exports = {
