@@ -9,7 +9,7 @@ let getHomePage = (req, res) => {
             console.log('>>> CHECK: ');
             console.log(results);
             data = results.map((row) => { return row })
-            return res.render('index.ejs', { dataUser: JSON.stringify(data) })
+            return res.render('index.ejs', { dataUser: data })
         }
     );
 }
